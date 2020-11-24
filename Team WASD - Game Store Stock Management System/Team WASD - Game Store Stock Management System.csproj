@@ -131,6 +131,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011240621199_InitialCreate.cs" />
+    <Compile Include="Migrations\202011240621199_InitialCreate.Designer.cs">
+      <DependentUpon>202011240621199_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011240640542_AddPublisher.cs" />
+    <Compile Include="Migrations\202011240640542_AddPublisher.Designer.cs">
+      <DependentUpon>202011240640542_AddPublisher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameStoreDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,7 +190,6 @@
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -194,6 +202,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011240621199_InitialCreate.resx">
+      <DependentUpon>202011240621199_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011240640542_AddPublisher.resx">
+      <DependentUpon>202011240640542_AddPublisher.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
