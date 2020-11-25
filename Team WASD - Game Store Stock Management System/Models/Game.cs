@@ -14,6 +14,23 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Models
         public int Id { get; set; }
         public string GameTitle { get; set; }
 
-        public string GamePublisher { get; set; }
+        public Publisher Publisher { get; set; }
+
+        public DateTime ReleaseDate { get; set; }
+
+        public Platform Platform { get; set; }
+
+
+        public Genre Genre { get; set; }
+
+        public string Description { get; set; }
+
+        public int InStockAmount { get; set; }
+
+        public double Price { get; set; }
+
+
+
+
     }
 }

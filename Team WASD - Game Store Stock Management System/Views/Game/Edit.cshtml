@@ -24,10 +24,10 @@
             @Html.ValidationMessageFor(model => model.GameTitle, "", new { @class = "text-danger" })
         </div>
 
-        @Html.LabelFor(model => model.GamePublisher, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Publisher, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.GamePublisher, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.GamePublisher, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Publisher, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Publisher, "", new { @class = "text-danger" })
         </div>
     </div>
 

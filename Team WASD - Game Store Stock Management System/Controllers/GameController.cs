@@ -17,7 +17,11 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Controllers
         // GET: Game
         public ActionResult Index()
         {
-            return View(db.Games.ToList());
+            var games = db.Games.Include(g => g.Publisher)
+                .Include(g => g.Platform)
+                .Include(g => g.Genre);
+            
+            return View(games.ToList());
         }
 
         // GET: Game/Details/5

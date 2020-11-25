@@ -14,7 +14,27 @@
         <th>
             @Html.DisplayNameFor(model => model.GameTitle)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Publisher.PublisherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre.GenreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Platform)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InStockAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -23,7 +43,28 @@
         @Html.DisplayFor(modelItem => item.GameTitle)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.GamePublisher)
+        @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ReleaseDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Genre.GenreName)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Platform.PlatformName)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.InStockAmount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
