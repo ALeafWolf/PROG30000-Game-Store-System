@@ -20,7 +20,6 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Models
 
         public Platform Platform { get; set; }
 
-
         public Genre Genre { get; set; }
 
         public string Description { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,7 +14,6 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Controllers
     public class GameController : Controller
     {
         private GameStoreDBContext db = new GameStoreDBContext();
-
         // GET: Game
         public ActionResult Index()
         {
@@ -31,7 +31,18 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
+            var games = db.Games.Include(g => g.Publisher)
+                .Include(g => g.Platform)
+                .Include(g => g.Genre);
+            Game game = null;
+            foreach(Game g in games)
+            {
+                if(g.Id == id)
+                {
+                    game = g;
+                }
+            }
+
             if (game == null)
             {
                 return HttpNotFound();
@@ -50,7 +61,7 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GameTitle")] Game game)
+        public ActionResult Create([Bind(Include = "Id,GameTitle,Publisher,ReleaseDate,Platform,Genre,Description,InStockAmount,Price")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -69,11 +80,25 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
+            var games = db.Games.Include(g => g.Publisher)
+                .Include(g => g.Platform)
+                .Include(g => g.Genre);
+            Game game = null;
+            foreach (Game g in games)
+            {
+                if (g.Id == id)
+                {
+                    game = g;
+                }
+            }
             if (game == null)
             {
                 return HttpNotFound();
             }
+
+            ViewData["Publishers"] = db.Publishers;
+            ViewData["Platforms"] = db.Platforms;
+            ViewData["Genres"] = db.Genres;
             return View(game);
         }
 
@@ -82,7 +107,7 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,GameTitle")] Game game)
+        public ActionResult Edit([Bind(Include = "Id,GameTitle,Publisher,ReleaseDate,Platform,Genre,Description,InStockAmount,Price")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -100,7 +125,17 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Game game = db.Games.Find(id);
+            var games = db.Games.Include(g => g.Publisher)
+                .Include(g => g.Platform)
+                .Include(g => g.Genre);
+            Game game = null;
+            foreach (Game g in games)
+            {
+                if (g.Id == id)
+                {
+                    game = g;
+                }
+            }
             if (game == null)
             {
                 return HttpNotFound();

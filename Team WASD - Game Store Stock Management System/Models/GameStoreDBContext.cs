@@ -15,6 +15,10 @@ namespace Team_WASD___Game_Store_Stock_Management_System.Models
 
         public DbSet<Publisher> Publishers { get; set; }
 
+        public DbSet<Platform> Platforms { get; set; }
+
+        public DbSet<Genre> Genres { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
